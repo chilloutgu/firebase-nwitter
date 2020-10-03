@@ -6,12 +6,14 @@ function App() {
   /* states */
   const [loading, setLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
   /* effects */
   useEffect(() => {
     authService.onAuthStateChanged(user => {
       if (user) {
         setIsLoggedIn(true);
         setLoading(true);
+        setUser(user);
         return;
       }
       setIsLoggedIn(false);
@@ -22,7 +24,7 @@ function App() {
   /* render */
   return (
     <div className="App">
-      {loading ? <AppRouter isLoggedIn={isLoggedIn} /> : 'loading...'}
+      {loading ? <AppRouter isLoggedIn={isLoggedIn} user={user} /> : 'loading...'}
     </div>
   );
 }

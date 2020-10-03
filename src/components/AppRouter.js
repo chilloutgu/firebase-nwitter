@@ -6,7 +6,7 @@ import Home from 'routes/Home';
 import Profile from 'routes/Profile';
 import Navigation from 'components/Navigation';
 
-function AppRouter({ isLoggedIn }) {
+function AppRouter({ isLoggedIn, user }) {
 
   return (
     <Router>
@@ -14,7 +14,9 @@ function AppRouter({ isLoggedIn }) {
       <Switch>
         {isLoggedIn &&
           <>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/">
+              <Home user={user} />
+            </Route>
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/profile/edit" component={EditProfile} />
 
