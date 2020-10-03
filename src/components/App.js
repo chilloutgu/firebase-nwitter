@@ -1,13 +1,28 @@
-import React from 'react';
-import firebase from '../firebase';
-import AppRouter from './AppRouter';
+import React, { useState, useEffect } from 'react';
+import { authService } from 'fbase';
+import AppRouter from 'components/AppRouter';
 
 function App() {
-  console.log(firebase);
+  /* states */
+  const [loading, setLoading] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  /* effects */
+  useEffect(() => {
+    authService.onAuthStateChanged(user => {
+      if (user) {
+        setIsLoggedIn(true);
+        setLoading(true);
+        return;
+      }
+      setIsLoggedIn(false);
+      setLoading(true);
+    });
+  }, []);
 
+  /* render */
   return (
     <div className="App">
-      <AppRouter />
+      {loading ? <AppRouter isLoggedIn={isLoggedIn} /> : 'loading...'}
     </div>
   );
 }
