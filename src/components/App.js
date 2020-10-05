@@ -21,6 +21,7 @@ function App() {
     });
   }, []);
 
+  console.log('hello!');
   /* render */
   return (
     <div className="App">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { dbService } from 'fbase';
 import Nweet from 'components/Nweet';
 import NweetForm from 'components/NweetForm';
@@ -19,13 +19,6 @@ function Home({ user }) {
     })
   }, []);
 
-  const onUpdateNweet = useCallback(() => {
-
-  }, []);
-
-  const onDeleteNweet = useCallback(() => {
-
-  }, []);
 
   return (
     <div>
@@ -36,8 +29,6 @@ function Home({ user }) {
             key={nweet.id}
             nweet={nweet}
             isOwner={nweet.creatorId === user.uid}
-            onUpdate={onUpdateNweet}
-            onDelete={onDeleteNweet}
           />
         ))}
       </div>
