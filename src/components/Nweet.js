@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { dbService } from 'fbase';
+import EditForm from 'components/EditForm';
 
 function Nweet({ nweet, isCreator }) {
 
@@ -33,13 +34,12 @@ function Nweet({ nweet, isCreator }) {
   return (
     <div>
       {edit && (
-        <>
-          <form onSubmit={onSubmitNewNweet}>
-            <input value={newNweet} onChange={onChangeNewNweet} placeholder="Edit your nweet" />
-            <input type="submit" value="edit" />
-          </form>
-          <button onClick={onToggleEdit}>Cancel</button>
-        </>
+        <EditForm
+          newNweet={newNweet}
+          onChange={onChangeNewNweet}
+          onSubmit={onSubmitNewNweet}
+          onClickCancel={onToggleEdit}
+        />
       ) || (
           <>
             <h4>{nweet.text}</h4>
