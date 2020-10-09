@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { dbService } from 'fbase';
-import Nweet from 'components/Nweet';
 import NweetForm from 'components/NweetForm';
+import Nweet from 'components/Nweet';
 
 function MainPage({ user }) {
   /* states */
@@ -9,28 +9,27 @@ function MainPage({ user }) {
 
   /* effects */
   useEffect(() => {
-    dbService.collection('nweets').onSnapshot(snapShot => {
-      const nweetsArr = snapShot.docs.map(doc => ({
+    dbService.collection('nweets').onSnapshot(snapshot => {
+      const nweetArr = snapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
       }));
 
-      setNweets(nweetsArr);
-    })
+      setNweets(nweetArr);
+    });
   }, []);
-
 
   return (
     <div>
       <NweetForm user={user} />
       <div>
-        {nweets.map(nweet => (
-          <Nweet
-            key={nweet.id}
-            nweet={nweet}
-            isOwner={nweet.creatorId === user.uid}
-          />
-        ))}
+        {nweets &&
+          nweets.length &&
+          nweets.map(nweet => (
+            <Fragment key={nweet.id}>
+              <Nweet nweet={nweet} isCreator={nweet.creatorId === user.uid} />
+            </Fragment>
+          ))}
       </div>
     </div>
   );

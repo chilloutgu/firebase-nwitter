@@ -4,10 +4,11 @@ import { useHistory } from 'react-router-dom';
 
 function ProfilePage() {
   const history = useHistory();
+
   const onClickLogout = () => {
     authService.signOut();
     history.push('/');
-  }
+  };
 
   return (
     <>

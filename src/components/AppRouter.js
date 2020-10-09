@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Auth from 'pages/LoginPage';
-import ProfileEditPage from 'pages/ProfileEditPage';
 import MainPage from 'pages/MainPage';
+import LoginPage from 'pages/LoginPage';
 import ProfilePage from 'pages/ProfilePage';
+import ProfileEditPage from 'pages/ProfileEditPage';
 import Nav from 'components/Nav';
 
 function AppRouter({ isLoggedIn, user }) {
@@ -21,7 +21,7 @@ function AppRouter({ isLoggedIn, user }) {
             <Route exact path="/profile/edit" component={ProfileEditPage} />
 
           </> ||
-          <Route exact path="/" component={Auth} />
+          <Route exact path="/" component={LoginPage} />
         }
       </Switch>
     </Router>

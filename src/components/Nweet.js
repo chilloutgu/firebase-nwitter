@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { dbService } from 'fbase';
 
-function Nweet({ nweet, isOwner }) {
+function Nweet({ nweet, isCreator }) {
 
   /* states */
   const [edit, setEdit] = useState(false);
@@ -43,7 +43,7 @@ function Nweet({ nweet, isOwner }) {
       ) || (
           <>
             <h4>{nweet.text}</h4>
-            {isOwner && (
+            {isCreator && (
               <>
                 <button onClick={onDeleteNweet}>Delete Nweet</button>
                 <button onClick={onToggleEdit}>Edit Nweet</button>
