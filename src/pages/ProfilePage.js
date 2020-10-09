@@ -2,7 +2,7 @@ import React from 'react';
 import { authService } from 'fbase';
 import { useHistory } from 'react-router-dom';
 
-function Profile() {
+function ProfilePage() {
   const history = useHistory();
   const onClickLogout = () => {
     authService.signOut();
@@ -16,4 +16,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default ProfilePage;

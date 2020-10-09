@@ -3,7 +3,7 @@ import { dbService } from 'fbase';
 import Nweet from 'components/Nweet';
 import NweetForm from 'components/NweetForm';
 
-function Home({ user }) {
+function MainPage({ user }) {
   /* states */
   const [nweets, setNweets] = useState([]);
 
@@ -36,4 +36,4 @@ function Home({ user }) {
   );
 }
 
-export default Home;
+export default MainPage;

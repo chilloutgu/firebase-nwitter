@@ -1,24 +1,24 @@
 import React from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import Auth from 'routes/Auth';
-import EditProfile from 'routes/EditProfile';
-import Home from 'routes/Home';
-import Profile from 'routes/Profile';
-import Navigation from 'components/Navigation';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Auth from 'pages/LoginPage';
+import ProfileEditPage from 'pages/ProfileEditPage';
+import MainPage from 'pages/MainPage';
+import ProfilePage from 'pages/ProfilePage';
+import Nav from 'components/Nav';
 
 function AppRouter({ isLoggedIn, user }) {
 
   return (
     <Router>
-      {isLoggedIn && <Navigation />}
+      {isLoggedIn && <Nav />}
       <Switch>
         {isLoggedIn &&
           <>
             <Route exact path="/">
-              <Home user={user} />
+              <MainPage user={user} />
             </Route>
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/profile/edit" component={EditProfile} />
+            <Route exact path="/profile" component={ProfilePage} />
+            <Route exact path="/profile/edit" component={ProfileEditPage} />
 
           </> ||
           <Route exact path="/" component={Auth} />

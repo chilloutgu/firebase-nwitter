@@ -1,10 +1,10 @@
 import React from 'react';
 
-function EditProfile() {
+function ProfileEditPage() {
 
   return (
     <span>Edit Profile!</span>
   );
 }
 
-export default EditProfile;
+export default ProfileEditPage;
