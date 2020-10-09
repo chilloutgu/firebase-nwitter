@@ -21,7 +21,7 @@ function App() {
 
       /* login failure */
       setIsLoggedIn(false);
-      setLoading(false);
+      setLoading(true);
     });
 
   }, []);
