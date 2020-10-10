@@ -23,13 +23,11 @@ function MainPage({ user }) {
     <div>
       <NweetForm user={user} />
       <div>
-        {nweets &&
-          nweets.length &&
-          nweets.map(nweet => (
-            <Fragment key={nweet.id}>
-              <Nweet nweet={nweet} isCreator={nweet.creatorId === user.uid} />
-            </Fragment>
-          ))}
+        {nweets.map(nweet => (
+          <Fragment key={nweet.id}>
+            <Nweet nweet={nweet} isCreator={nweet.creatorId === user.uid} />
+          </Fragment>
+        ))}
       </div>
     </div>
   );

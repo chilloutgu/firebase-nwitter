@@ -15,7 +15,11 @@ function App() {
       if (user) {
         setIsLoggedIn(true);
         setLoading(true);
-        setUser(user);
+        setUser({
+          uid: user.uid,
+          displayName: user.displayName,
+          updateProfile: (newProfile) => user.updateProfile(newProfile)
+        });
         return;
       }
 
@@ -26,10 +30,20 @@ function App() {
 
   }, []);
 
+  /* functions */
+  const refreshUser = () => {
+    const currentUser = authService.currentUser;
+    setUser({
+      id: currentUser.uid,
+      displayName: currentUser.displayName,
+      updateProfile: (newProfile) => currentUser.updateProfile(newProfile)
+    });
+  }
+
   /* render */
   return (
     <div className="App">
-      {loading ? <AppRouter isLoggedIn={isLoggedIn} user={user} /> : 'loading...'}
+      {loading ? <AppRouter isLoggedIn={isLoggedIn} user={user} refreshUser={refreshUser} /> : 'loading...'}
     </div>
   );
 }
